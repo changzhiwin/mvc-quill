@@ -28,7 +28,7 @@ class QuestionAnswerDao(ctx: MysqlJAsyncContext[SnakeCase.type])(implicit ec: Ex
 
     transaction { implicit ec =>
       for {
-        questionId <- run(saveQuestion)
+        questionId  <- run(saveQuestion)
         answerIds   <- run(saveAnswers(questionId))
       } yield questionId -> answerIds
     }
